@@ -2,7 +2,7 @@ If you are logged in as root:
 
 export AWS_REGION=ap-south-1
 export KUBECONFIG=/root/.kube/config
-aws eks update-kubeconfig --region ap-south-1 --name raham-cluster
+aws eks update-kubeconfig --region ap-south-1 --name raham-cluster-1
 kubectl get nodes
 kubectl get pods -A
 
@@ -12,6 +12,6 @@ If you are logged in as ubuntu:
 
 export AWS_REGION=ap-south-1
 export KUBECONFIG=/home/ubuntu/.kube/config
-aws eks update-kubeconfig --region ap-south-1 --name raham-cluster
+aws eks update-kubeconfig --region ap-south-1 --name raham-cluster-1
 kubectl get nodes
 kubectl get pods -A

@@ -16,7 +16,7 @@ variable "project_name" {
 variable "bastion_ami_id" {
   description = "Ubuntu 22.04 LTS AMI ID for the bastion/admin host (region-specific, update if changing region)"
   type        = string
-  default     = "ami-0e35ddab05955cf57" # Ubuntu 22.04 LTS - ap-south-1 (Mumbai)
+  default     = "ami-01a00762f46d584a1" # Ubuntu 22.04 LTS - ap-south-1 (Mumbai)
 }
 
 variable "bastion_instance_type" {
@@ -76,7 +76,7 @@ variable "private_subnet_cidrs" {
 variable "cluster_name" {
   description = "Name of the EKS cluster"
   type        = string
-  default     = "raham-cluster"
+  default     = "raham-cluster-1"
 }
 
 variable "cluster_version" {
@@ -97,13 +97,13 @@ variable "nodegroup_name" {
 variable "node_instance_types" {
   description = "EC2 instance types for EKS worker nodes (t3.micro is too small for production EKS — using t3.medium)"
   type        = list(string)
-  default     = ["t3.medium"]
+  default     = ["c7i-flex.large"]
 }
 
 variable "node_volume_size" {
   description = "EBS root volume size in GB for each EKS worker node"
   type        = number
-  default     = 20
+  default     = 30
 }
 
 variable "node_desired_size" {
@@ -121,5 +121,5 @@ variable "node_min_size" {
 variable "node_max_size" {
   description = "Maximum number of worker nodes for autoscaling"
   type        = number
-  default     = 6
+  default     = 4
 }

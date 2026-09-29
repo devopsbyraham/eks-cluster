@@ -8,7 +8,7 @@ aws_region   = "ap-south-1"
 project_name = "raham"
 
 # Bastion / Admin host — Ubuntu, m7i-flex.large, 30 GB EBS (as requested)
-bastion_ami_id           = "ami-0e35ddab05955cf57" # Ubuntu 22.04 LTS - ap-south-1
+bastion_ami_id           = "ami-01a00762f46d584a1" # Ubuntu 22.04 LTS - ap-south-1
 bastion_instance_type    = "m7i-flex.large"
 bastion_root_volume_size = 30
 key_pair_name            = "abcd"      # must already exist in your AWS account
@@ -26,8 +26,8 @@ cluster_version = "1.32"
 
 # EKS Managed Nodegroup
 nodegroup_name      = "raham-cluster-ng-1"
-node_instance_types = ["t3.medium"] # t3.micro is too small for EKS worker nodes
+node_instance_types = ["c7i-flex.large"] # t3.micro is too small for EKS worker nodes
 node_volume_size    = 20
 node_desired_size   = 2
 node_min_size       = 2
-node_max_size       = 6
+node_max_size       = 4

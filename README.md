@@ -9,9 +9,9 @@ This Terraform project converts your manual `eksctl` + bash script into fully au
 | VPC + 3 public + 3 private subnets | Required networking (your script relied on default VPC implicitly via eksctl) |
 | Bastion EC2 (Ubuntu, `m7i-flex.large`, 30 GB EBS) | Manual host where you ran Step 1 & Step 2 commands |
 | `user_data` bootstrap script  | STEP-1 (apt update, unzip) + STEP-2 (AWS CLI, kubectl, eksctl install) — now automatic |
-| EKS Cluster (`raham-cluster`, v1.32) | `eksctl create cluster --name=raham-cluster --version 1.32 ...` |
+| EKS Cluster (`raham-cluster-1`, v1.32) | `eksctl create cluster --name=raham-cluster-1 --version 1.32 ...` |
 | IAM OIDC Provider             | `eksctl utils associate-iam-oidc-provider --approve` |
-| EKS Managed Nodegroup         | `eksctl create nodegroup --cluster=raham-cluster ...` |
+| EKS Managed Nodegroup         | `eksctl create nodegroup --cluster=raham-cluster-1 ...` |
 
 ## Key fixes applied vs. your original script
 
@@ -73,7 +73,7 @@ terraform output
 ssh -i eksss.pem ubuntu@$(terraform output -raw bastion_public_ip)
 
 # On the bastion host, configure kubectl (also auto-added to .bashrc)
-aws eks update-kubeconfig --region ap-south-1 --name raham-cluster
+aws eks update-kubeconfig --region ap-south-1 --name raham-cluster-1
 
 # Verify nodes are up
 kubectl get nodes
